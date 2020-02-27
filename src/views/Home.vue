@@ -6,9 +6,7 @@
 <p :class="{ cardIsActive: active}">{{sayHello}} is a product description {{$store.state.counter}} for our simple store product!</p>
 
 <v-img src=""></v-img>
-
 </v-card>
-
   </div>
 </template>
 
