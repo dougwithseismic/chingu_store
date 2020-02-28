@@ -5,7 +5,7 @@
       <div class="nav-content">
         <ul class="nav-item-list">
           <router-link exact tag="li" to="/">Visit Store</router-link>
-          <li>View Cart</li>
+          <router-link tag="li" to="/cart">View Cart</router-link>
           <li>Checkout</li>
         </ul>
       </div>

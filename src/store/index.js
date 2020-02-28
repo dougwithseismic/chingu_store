@@ -58,17 +58,16 @@ export default new Vuex.Store({
     addToCart(state, id) {
       //check if product is already in cart
       let productInCartList = state.cart.filter((object) => object.productid == id)
-      if (productInCartList.length===1) {
+      if (productInCartList.length === 1) {
         productInCartList[0].quantity += 1
         console.log('in if')
-      }else{
+      } else {
         console.log('in else')
         state.cart.push({
           productid: id,
-          quantity: 1,
+          quantity: 1
         })
       }
-
     },
     resetCart(state) {
       state.cart = []
@@ -79,10 +78,9 @@ export default new Vuex.Store({
 
       // If we find find it, decrease quantity by one, or remove completely if there's only quanity === 1
       if (productInCart.quantity === 1) {
-        console.log("decrease quantity", productInCart)
+        console.log('decrease quantity', productInCart)
         state.cart = state.cart.filter((o) => o.productid !== productInCart.productid)
-      }
-      else {
+      } else {
         productInCart.quantity = productInCart.quantity - 1
       }
     }
@@ -102,6 +100,9 @@ export default new Vuex.Store({
   getters: {
     getProductFromSlug: (state) => (slug) => {
       return state.products.filter((p) => p.slug === slug)[0]
+    },
+    getProductFromId: (state) => (id) => {
+      return state.products.filter((product) => product.id === id)[0]
     }
   }
 })
