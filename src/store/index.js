@@ -60,9 +60,7 @@ export default new Vuex.Store({
       let productInCartList = state.cart.filter((object) => object.productid == id)
       if (productInCartList.length === 1) {
         productInCartList[0].quantity += 1
-        console.log('in if')
       } else {
-        console.log('in else')
         state.cart.push({
           productid: id,
           quantity: 1
