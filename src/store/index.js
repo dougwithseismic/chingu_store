@@ -36,7 +36,7 @@ export default new Vuex.Store({
       {
         id: 4,
         name: "Kid's chair",
-        slug: "kids-chair-for-toddlers",
+        slug: 'kids-chair-for-toddlers',
         description: 'Chair for toddlers.',
         imagesrc: 'https://images-na.ssl-images-amazon.com/images/I/71lbhX4s69L._AC_SL1500_.jpg',
         price: 5,
@@ -46,32 +46,54 @@ export default new Vuex.Store({
     cart: [
       {
         productid: 2,
-        quantity: 1,
+        quantity: 1
       },
       {
         productid: 1,
-        quantity: 2,
+        quantity: 2
       }
     ]
-    ,
   },
   mutations: {
-    addToCart(state, id){
+    addToCart(state, id) {
       //check if product is already in cart
       state.cart.push({
         productid: id,
-        quantity: 5,
+        quantity: 1
       })
     },
+    resetCart(state) {
+      state.cart = []
+    },
+    removeItemFromCart(state, id) {
+      // Find objects in cart with productid
+      let productInCart = state.cart.filter((object) => object.productid == id)[0]
+
+      // If we find find it, decrease quantity by one, or remove completely if there's only quanity === 1
+      if (productInCart.quantity === 1) {
+        console.log("decrease quantity", productInCart)
+        state.cart = state.cart.filter((o) => o.productid !== productInCart.productid)
+      } 
+      else {
+        productInCart.quantity = productInCart.quantity - 1
+      }
+    }
   },
   actions: {
-    addToCart({commit}, id){
+    addToCart({ commit }, id) {
       commit('addToCart', id)
+    },
+    resetCart({ commit }) {
+      commit('resetCart')
+    },
+    removeItemFromCart({ commit }, id) {
+      // Decreases the quanity of a product by 1.
+      commit('removeItemFromCart', id)
     }
   },
   getters: {
-    getProductFromSlug : state => slug =>{
-      return state.products.filter(p=>p.slug===slug)[0]
+    getProductFromSlug: (state) => (slug) => {
+      return state.products.filter((p) => p.slug === slug)[0]
     }
   }
 })
