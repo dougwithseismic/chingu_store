@@ -53,5 +53,8 @@ export default {
 .nav-item-list li:hover {
   font-weight: 900;
 }
-</style>
 
+.router-link-active{
+  border-bottom: 2px solid red;
+}
+</style>
