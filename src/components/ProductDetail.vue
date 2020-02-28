@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="product-detail">
     {{$route.params.slug}}
-    
-    <div v-if="product">    
-    <v-btn @click="addItemToCart(product.id)">ADDTOCART</v-btn>
-    <v-btn @click="resetCart">RESETCART</v-btn>
-    <v-btn @click="removeItemFromCart(2)">Remove ProductID 2 from cart</v-btn> 
+
+    <div v-if="product">
+      <v-btn @click="addItemToCart(product.id)">ADDTOCART</v-btn>
+      <v-btn @click="resetCart">RESETCART</v-btn>
+      <v-btn @click="removeItemFromCart(product.id)">Remove Product</v-btn>
     </div>
+
     <div v-if="!product">Loading..</div>
 
 

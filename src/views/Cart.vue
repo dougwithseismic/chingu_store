@@ -1,0 +1,13 @@
+<template lang="html">
+  <div class="cart">
+cart
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="scss" scoped>
+</style>

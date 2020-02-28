@@ -57,10 +57,18 @@ export default new Vuex.Store({
   mutations: {
     addToCart(state, id) {
       //check if product is already in cart
-      state.cart.push({
-        productid: id,
-        quantity: 1
-      })
+      let productInCartList = state.cart.filter((object) => object.productid == id)
+      if (productInCartList.length===1) {
+        productInCartList[0].quantity += 1
+        console.log('in if')
+      }else{
+        console.log('in else')
+        state.cart.push({
+          productid: id,
+          quantity: 1,
+        })
+      }
+
     },
     resetCart(state) {
       state.cart = []
@@ -73,7 +81,7 @@ export default new Vuex.Store({
       if (productInCart.quantity === 1) {
         console.log("decrease quantity", productInCart)
         state.cart = state.cart.filter((o) => o.productid !== productInCart.productid)
-      } 
+      }
       else {
         productInCart.quantity = productInCart.quantity - 1
       }

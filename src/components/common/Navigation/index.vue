@@ -4,7 +4,7 @@
       <div class="logo">Chingu</div>
       <div class="nav-content">
         <ul class="nav-item-list">
-          <router-link tag="li" to="/">Visit Store</router-link>
+          <router-link exact tag="li" to="/">Visit Store</router-link>
           <li>View Cart</li>
           <li>Checkout</li>
         </ul>
