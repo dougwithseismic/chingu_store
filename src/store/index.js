@@ -42,9 +42,36 @@ export default new Vuex.Store({
         price: 5,
         sku: '004ABC'
       }
+    ],
+    cart: [
+      {
+        productid: 2,
+        quantity: 1,
+      },
+      {
+        productid: 1,
+        quantity: 2,
+      }
     ]
+    ,
   },
-  mutations: {},
-  actions: {},
-  modules: {}
+  mutations: {
+    addToCart(state, id){
+      //check if product is already in cart
+      state.cart.push({
+        productid: id,
+        quantity: 5,
+      })
+    },
+  },
+  actions: {
+    addToCart({commit}, id){
+      commit('addToCart', id)
+    }
+  },
+  getters: {
+    getProductFromSlug : state => slug =>{
+      return state.products.filter(p=>p.slug===slug)[0]
+    }
+  }
 })
