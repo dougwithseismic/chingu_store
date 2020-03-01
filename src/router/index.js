@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import LandingPage from '../views/LandingPage.vue'
 import ProductDetail from '@/components/ProductDetail.vue'
 
 Vue.use(VueRouter)
@@ -8,7 +9,13 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/products'
+    name: 'landing',
+    component: LandingPage,
+  },
+  {
+    path: '/products/:slug',
+    name: 'detail',
+    component: ProductDetail,
   },
   {
     path: '/products',
@@ -29,9 +36,8 @@ const routes = [
     component: () => import('../views/Cart.vue'),
   },
   {
-    path: '/:slug',
-    name: 'detail',
-    component: ProductDetail,
+    path: '*',
+    redirect: '/'
   },
 ]
 
