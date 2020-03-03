@@ -7,7 +7,7 @@
           <router-link exact tag="li" to="/">Visit Store</router-link>
           <router-link tag="li" to="/cart">
             Cart
-            <v-badge v-if="cartQuantity > 0" color="purple" :content="cartQuantity">Cart</v-badge>
+            <v-badge v-if="cartQuantity > 0" color="primary" :content="cartQuantity">Cart</v-badge>
           </router-link>
           <li>Checkout</li>
         </ul>
@@ -20,7 +20,7 @@
 export default {
   name: "Navigation",
   components: {},
-  computed: { 
+  computed: {
     cartQuantity() {
       return this.$store.getters.getCartQuantity()
     }

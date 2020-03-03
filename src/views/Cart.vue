@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cart">
-    <div v-if="cart" class="cart-items">
+    <div v-if="cart.length>0" class="cart-items">
 
       <div v-for="item in productsInCart" :key="item.id"  class="cart-item">
       <!-- { "id": 2, "name": "Gaming chair", "slug": "gaming-chair-2", "description": "Chair for gamers.", "imagesrc": "https://images-na.ssl-images-amazon.com/images/I/71lbhX4s69L._AC_SL1500_.jpg", "price": 15, "sku": "002ABC", "quantity": 1  -->
@@ -45,7 +45,16 @@
       </v-col>
     </v-row>
 
-    </div>
+  </div>
+  <!-- end of cart -->
+
+
+  <div class="text-center" v-if="cart.length==0">
+    <h3>No items in cart yet. Please go to store to add some nice chairs.</h3>
+    <router-link tag="div" :to="{name: 'Home'}">
+      <v-btn class="primary" :class="{'mt-5': $vuetify.breakpoint.smAndUp}">To products page</v-btn>
+    </router-link>
+  </div>
 
 
   </div>

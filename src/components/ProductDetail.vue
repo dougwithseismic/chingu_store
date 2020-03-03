@@ -10,6 +10,17 @@
 
     <div v-if="!product">Loading..</div>
 
+    <v-snackbar
+        v-model="showSnackbar"
+        :timeout="1000"
+        bottom
+        color="primary"
+      >
+      <span class="text-center">
+        Added to cart.
+      </span>
+
+    </v-snackbar>
 
   </div>
 </template>
@@ -18,12 +29,14 @@
 export default {
   data() {
     return {
-      product: null
+      product: null,
+      showSnackbar: false,
     };
   },
   methods: {
     addItemToCart(id) {
       this.$store.dispatch("addToCart", id);
+      this.showSnackbar = true;
     },
     resetCart() {
       this.$store.dispatch("resetCart");
@@ -41,6 +54,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+span{
+  width:100%;
+}
 </style>
 
 
