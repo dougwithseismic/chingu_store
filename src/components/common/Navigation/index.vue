@@ -5,7 +5,10 @@
       <div class="nav-content">
         <ul class="nav-item-list">
           <router-link exact tag="li" to="/">Visit Store</router-link>
-          <router-link tag="li" to="/cart">View Cart</router-link>
+          <router-link tag="li" to="/cart">
+            Cart
+            <v-badge v-if="cartQuantity > 0" color="purple" :content="cartQuantity">Cart</v-badge>
+          </router-link>
           <li>Checkout</li>
         </ul>
       </div>
@@ -16,7 +19,12 @@
 <script>
 export default {
   name: "Navigation",
-  components: {}
+  components: {},
+  computed: { 
+    cartQuantity() {
+      return this.$store.getters.getCartQuantity()
+    }
+  }
 };
 </script>
 
@@ -54,7 +62,7 @@ export default {
   font-weight: 900;
 }
 
-.router-link-active{
+.router-link-active {
   border-bottom: 2px solid red;
 }
 </style>

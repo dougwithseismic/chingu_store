@@ -101,6 +101,10 @@ export default new Vuex.Store({
     },
     getProductFromId: (state) => (id) => {
       return state.products.filter((product) => product.id === id)[0]
+    },
+    getCartQuantity: (state) => () => {
+      // For each item in the cart, create a sum of quantities
+      return state.cart.length === 0 ? 0 : state.cart.reduce((a, b) => ({ quantity: a.quantity + b.quantity })).quantity
     }
   }
 })
