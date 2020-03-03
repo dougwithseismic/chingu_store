@@ -29,3 +29,14 @@ export default {
   })
 };
 </script>
+
+<style lang="scss">
+  .container.container--fluid{
+    padding: 0;
+    max-width:1500px;
+    
+    &>div{
+      padding: 12px;
+    }
+  }
+</style>
